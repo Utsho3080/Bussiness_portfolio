@@ -1,5 +1,5 @@
 .team {
-  padding: 9rem 2rem;
+  padding: 2rem 2rem;
   background-color: var(--bg-surface);
   position: relative;
   overflow: hidden;
@@ -31,8 +31,8 @@
 
 .team-card:hover {
   transform: translateY(-12px);
-  border-color: rgba(59,130,246,0.25);
-  box-shadow: 0 32px 64px rgba(0,0,0,0.35), 0 0 0 1px rgba(59,130,246,0.12);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(59, 130, 246, 0.12);
 }
 
 .card-image-wrapper {
@@ -72,7 +72,7 @@
   display: inline-block;
   background: rgba(59, 130, 246, 0.1);
   color: var(--accent-blue);
-  border: 1px solid rgba(59,130,246,0.2);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   padding: 0.4rem 1.1rem;
   border-radius: 9999px;
   font-size: 0.8rem;
@@ -135,7 +135,9 @@
   transition: all 0.3s ease;
 }
 
-[data-theme='dark'] .social-icon { border-color: rgba(255,255,255,0.1); }
+[data-theme='dark'] .social-icon {
+  border-color: rgba(255, 255, 255, 0.1);
+}
 
 .social-icon:hover {
   background: var(--gradient-primary);
