@@ -15,6 +15,76 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  /* Removed global background so dark mode defaults back to your original styling */
+}
+
+/* ── LIGHT MODE HERO — matches the reference photo ── */
+
+/* Gradient: deep navy → rich indigo → vivid purple → soft lavender white */
+[data-theme='light'] .hero-background {
+  background: linear-gradient(180deg,
+      #080b1a 0%,
+      #12103a 25%,
+      #2d1b8e 50%,
+      #6b48f5 72%,
+      #c5b8f8 88%,
+      #ede9ff 100%);
+}
+
+/* Hide the subtle grid — it's invisible on this dark bg anyway */
+[data-theme='light'] .hero-grid {
+  display: none;
+}
+
+/* Tune orbs to match the vivid blue-purple look */
+[data-theme='light'] .orb-1 {
+  background: radial-gradient(circle, #4f46e5, #1e1b8e);
+  opacity: 0.55;
+}
+
+[data-theme='light'] .orb-2 {
+  background: radial-gradient(circle, #7c3aed, #4338ca);
+  opacity: 0.45;
+}
+
+[data-theme='light'] .orb-3 {
+  background: radial-gradient(circle, #a855f7, #6d28d9);
+  opacity: 0.35;
+}
+
+/* Force ALL text inside hero to white — dark bg needs light text */
+[data-theme='light'] .hero-title,
+[data-theme='light'] .hero-subtitle,
+[data-theme='light'] .typewriter-text,
+[data-theme='light'] .typewriter-cursor,
+[data-theme='light'] .scroll-indicator {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+[data-theme='light'] .hero-badge {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+[data-theme='light'] .hero-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Secondary (Book a call) button — light outline style on dark bg */
+[data-theme='light'] .hero .btn-secondary {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+[data-theme='light'] .hero .btn-secondary:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
 }
 
 /* Mesh grid overlay */
@@ -110,18 +180,20 @@
 
 /* Typewriter */
 .typewriter-wrap {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
   min-height: 1.1em;
   white-space: nowrap;
   text-align: center;
+  margin: 0 auto;
 }
 
 .typewriter-text {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: inherit;
 }
 
 .typewriter-cursor {

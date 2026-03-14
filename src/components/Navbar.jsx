@@ -17,59 +17,60 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Services', href: '#services' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Team', href: '#team' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Team',     href: '#team'     },
+    { name: 'Contact',  href: '#contact'  }
   ];
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="nav-container">
-        <a href="#home" className="logo">
-          <Code2 className="logo-icon" size={28} />
-          <span>Elevate<span className="text-accent">X</span></span>
-        </a>
+        <div className="nav-container">
+          <a href="#home" className="logo">
+            <Code2 className="logo-icon" size={28} />
+            <span>Elevate<span className="text-accent">X</span></span>
+          </a>
 
-        <div className="desktop-links">
-          {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="nav-link">{link.name}</a>
-          ))}
-        </div>
+          <div className="desktop-links">
+            {navLinks.map((link) => (
+              <a key={link.name} href={link.href} className="nav-link">{link.name}</a>
+            ))}
+          </div>
 
-        <div className="nav-right">
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-          >
-            {theme === 'dark'
-              ? <Sun size={20} className="theme-icon" />
-              : <Moon size={20} className="theme-icon" />
-            }
-          </button>
+          <div className="nav-right">
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark'
+                ? <Sun  size={20} className="theme-icon" />
+                : <Moon size={20} className="theme-icon" />
+              }
+            </button>
 
-          <a href="#contact" className="btn-primary">Hire Us</a>
+            <a href="#contact" className="btn-primary">Contact Us</a>
 
-          <div className="mobile-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            <div className="mobile-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-        {navLinks.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            className="mobile-link"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            {link.name}
-          </a>
-        ))}
-      </div>
-    </nav>
+        <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="mobile-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      </nav>
   );
 };
 
 export default Navbar;
+

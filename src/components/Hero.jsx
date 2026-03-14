@@ -58,7 +58,8 @@ const Hero = () => {
         <h1 className="hero-title" style={{ animation: 'fadeUp 0.7s ease 0.25s both' }}>
           We Power Your<br />
           <span className="typewriter-wrap">
-            <span className="typewriter-text text-gradient" ref={wordRef}></span>
+            {/* Removed text-gradient class to allow the CSS font colors to take over naturally */}
+            <span className="typewriter-text" ref={wordRef}></span>
             <span className="typewriter-cursor"></span>
           </span>
         </h1>
@@ -67,20 +68,13 @@ const Hero = () => {
           High-performance websites, revenue-driving marketing & rock-solid maintenance — all under one roof to scale your brand fearlessly.
         </p>
 
-        {/* <div className="hero-stats" style={{ animation: 'fadeUp 0.7s ease 0.55s both' }}>
-          <div className="stat-item"><span className="stat-num">150+</span><span className="stat-label">Projects</span></div>
-          <div className="stat-divider"></div>
-          <div className="stat-item"><span className="stat-num">98%</span><span className="stat-label">Satisfaction</span></div>
-          <div className="stat-divider"></div>
-          <div className="stat-item"><span className="stat-num">7+</span><span className="stat-label">Years</span></div>
-        </div> */}
-
         <div className="hero-actions" style={{ animation: 'fadeUp 0.7s ease 0.65s both' }}>
           <a href="#services" className="btn-primary hero-btn">
             Explore Services <ArrowRight size={18} />
           </a>
-          <a href="#projects" className="btn-secondary hero-btn">
-            View Our Work
+          <a href="tel:+916290575057" className="btn-secondary hero-btn">
+            {/* 3. Changed button text */}
+            Book a call ↗
           </a>
         </div>
       </div>

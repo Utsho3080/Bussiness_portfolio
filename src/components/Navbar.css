@@ -23,6 +23,41 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* ── Light mode navbar over the dark hero gradient (top of page) ── */
+[data-theme='light'] .navbar:not(.scrolled) .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.4s ease;
+}
+
+[data-theme='light'] .navbar:not(.scrolled) .nav-link:hover {
+  color: #ffffff;
+}
+
+[data-theme='light'] .navbar:not(.scrolled) .nav-link::after {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme='light'] .navbar:not(.scrolled) .logo {
+  color: #ffffff;
+  transition: color 0.4s ease;
+}
+
+[data-theme='light'] .navbar:not(.scrolled) .theme-toggle {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.35);
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+[data-theme='light'] .navbar:not(.scrolled) .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #ffffff;
+}
+
+[data-theme='light'] .navbar:not(.scrolled) .mobile-toggle {
+  color: #ffffff;
+}
+
 .nav-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -72,8 +107,13 @@
   transition: width 0.3s ease;
 }
 
-.nav-link:hover { color: var(--text-primary); }
-.nav-link:hover::after { width: 100%; }
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
 
 .nav-right {
   display: flex;
@@ -98,7 +138,9 @@
   overflow: hidden;
 }
 
-[data-theme='dark'] .theme-toggle { border-color: rgba(255,255,255,0.15); }
+[data-theme='dark'] .theme-toggle {
+  border-color: rgba(255, 255, 255, 0.15);
+}
 
 .theme-toggle:hover {
   background: rgba(59, 130, 246, 0.1);
@@ -108,7 +150,9 @@
   box-shadow: 0 0 16px var(--accent-glow);
 }
 
-.theme-icon { transition: all 0.3s ease; }
+.theme-icon {
+  transition: all 0.3s ease;
+}
 
 /* ── MOBILE ── */
 .mobile-toggle {
@@ -124,7 +168,7 @@
   width: 100%;
   background: rgba(3, 6, 20, 0.97);
   backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(59,130,246,0.12);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.12);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -145,10 +189,21 @@
   visibility: visible;
 }
 
-.mobile-link { font-size: 1.2rem; font-weight: 700; }
+.mobile-link {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
 
 @media (max-width: 868px) {
-  .desktop-links { display: none; }
-  .mobile-toggle { display: block; }
-  .navbar .btn-primary { display: none; }
+  .desktop-links {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .navbar .btn-primary {
+    display: none;
+  }
 }
