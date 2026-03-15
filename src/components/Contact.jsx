@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Mail, MessageCircle, Phone } from 'lucide-react';
+import { Mail, MessageCircle, Phone, Send } from 'lucide-react';
 import './Contact.css';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Fill in these three values from your EmailJS dashboard (emailjs.com)
-//   1. Service ID  → Email Services → your service → Service ID
-//   2. Template ID → Email Templates → your template → Template ID
-//   3. Public Key  → Account → API Keys → Public Key
-// ─────────────────────────────────────────────────────────────────────────────
 const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
 const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
 const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
 
 const EMAIL = 'sahasujit8100@gmail.com';
+const PHONE = '+91 6290575057';
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+  const [status, setStatus] = useState('idle');
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
@@ -33,6 +28,7 @@ const Contact = () => {
         {
           from_name: form.name,
           from_email: form.email,
+          from_phone: form.phone,
           message: form.message,
           to_email: EMAIL,
         },
@@ -48,87 +44,125 @@ const Contact = () => {
 
   return (
     <section className="contact" id="contact">
-      <div className="section-heading text-center">
-        <h2 className="title">Let's <span className="text-accent">Connect</span></h2>
-        <p className="subtitle">Ready to start your next big project?</p>
+      <div className="contact-header">
+        <h2 className="contact-title">Let's <br />Get In <em>Touch</em></h2>
       </div>
 
-      <div className="contact-container reveal">
-        <div className="contact-info">
-          <h3>Get in Touch</h3>
-          <p>We'd love to hear from you. Fill out the form or reach out directly.</p>
+      <div className="contact-card-wrapper reveal">
+        <div className="contact-sidebar">
+          <h3 className="sidebar-title">Quick Contact</h3>
 
-          <a href={`mailto:${EMAIL}`} className="info-item info-link">
-            <Mail className="info-icon" />
-            <span>sahasujit8100@gmail.com</span>
-          </a>
+          <div className="sidebar-info">
+            <div className="sidebar-item">
 
-          <a
-            href="https://wa.me/918583043080 "
-            target="_blank"
-            rel="noopener noreferrer"
-            className="info-item info-link"
-          >
-            <MessageCircle className="info-icon whatsapp-icon" />
-            <span>Chat on WhatsApp</span>
-          </a>
 
-          <a href="tel:+916290575057" className="info-item info-link">
-            <Phone className="info-icon" />
-            <span>+91 6290575057</span>
-          </a>
+            </div>
+
+            <a href={`mailto:${EMAIL}`} className="sidebar-item link">
+              <div className="sidebar-icon">
+                <Mail size={22} />
+              </div>
+              <div className="sidebar-text">
+                <p>{EMAIL}</p>
+              </div>
+            </a>
+
+            <a
+              href="https://wa.me/918583043080"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sidebar-item link"
+            >
+              <div className="sidebar-icon">
+                <MessageCircle size={22} />
+              </div>
+              <div className="sidebar-text">
+                <p>Chat on WhatsApp</p>
+              </div>
+            </a>
+
+            <a href={`tel:${PHONE.replace(/\s/g, '')}`} className="sidebar-item link">
+              <div className="sidebar-icon">
+                <Phone size={22} />
+              </div>
+              <div className="sidebar-text">
+                <p>{PHONE}</p>
+              </div>
+            </a>
+
+          </div>
         </div>
 
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              placeholder="John Doe"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="john@example.com"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              rows="4"
-              placeholder="How can we help?"
-              value={form.message}
-              onChange={handleChange}
-              required
-            ></textarea>
+        <div className="contact-main">
+          <div className="main-header">
+            <h2 className="main-title">Contact Us Today</h2>
+            <p className="main-subtitle">If You Have Questions Or Special Requests, Just Drop Us A Line.</p>
           </div>
 
-          <button
-            type="submit"
-            className="btn-primary w-full"
-            disabled={status === 'sending'}
-          >
-            {status === 'sending' ? 'Sending…' : 'Send Message'}
-          </button>
+          <form className="contact-form-new" onSubmit={handleSubmit}>
+            <div className="form-row">
+              <input
+                type="text"
+                id="name"
+                placeholder="Full Name"
+                className="custom-input"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-row">
+              <input
+                type="email"
+                id="email"
+                placeholder="Your Email"
+                className="custom-input"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-row">
+              <input
+                type="text"
+                id="phone"
+                placeholder="Phone Number"
+                className="custom-input"
+                value={form.phone}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-row">
+              <textarea
+                id="message"
+                placeholder="Message"
+                className="custom-textarea"
+                rows="5"
+                value={form.message}
+                onChange={handleChange}
+                required
+              ></textarea>
 
-          {status === 'success' && (
-            <p className="form-feedback success">✅ Message sent! We'll get back to you soon.</p>
-          )}
-          {status === 'error' && (
-            <p className="form-feedback error">❌ Something went wrong. Please try again or contact us directly.</p>
-          )}
-        </form>
+            </div>
+
+            <button
+              type="submit"
+              className="submit-btn-new"
+              disabled={status === 'sending'}
+            >
+              <Send size={20} />
+              {status === 'sending' ? 'SENDING...' : 'SUBMIT'}
+            </button>
+
+            {status === 'success' && (
+              <p className="form-status success">✅ Message sent successfully!</p>
+            )}
+            {status === 'error' && (
+              <p className="form-status error">❌ Error sending message. Please try again.</p>
+            )}
+          </form>
+        </div>
       </div>
     </section>
   );
