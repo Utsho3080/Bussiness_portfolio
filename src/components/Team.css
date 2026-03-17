@@ -45,8 +45,8 @@
   max-width: 1000px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
 }
 
 .team-card {
@@ -100,7 +100,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 0.5rem;
+  gap: 0.6rem;
   margin-bottom: 2rem;
 }
 
@@ -139,31 +139,7 @@
   font-size: 0.96rem;
 }
 
-.member-skills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1.75rem;
-}
-
-.skill-chip {
-  display: inline-block;
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  color: var(--accent-blue);
-  padding: 0.3rem 0.85rem;
-  border-radius: 9999px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
+/* Member cards left-aligned */
 
 .social-icon {
   display: flex;
@@ -187,4 +163,32 @@
   color: white;
   transform: translateY(-4px) scale(1.1);
   box-shadow: 0 8px 20px var(--accent-glow);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .team {
+    padding: 4rem 1.25rem;
+  }
+
+  .team-header {
+    margin-bottom: 3rem;
+  }
+
+  .team-title {
+    font-size: 2.4rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .card-image-wrapper {
+    height: 320px;
+  }
+
+  .card-content {
+    padding: 2rem 1.5rem;
+  }
 }
