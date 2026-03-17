@@ -149,7 +149,8 @@
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 860px;
+  max-width: 1100px; /* Increased to prevent clipping of long typewriter phrases */
+  width: 100%;
 }
 
 .hero-badge {
@@ -170,9 +171,9 @@
 
 .hero-title {
   font-family: var(--font-head);
-  font-size: clamp(3.2rem, 7vw, 5.5rem);
+  font-size: clamp(3.2rem, 8vw, 5rem); /* Slightly reduced max size for better fit */
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.1;
   margin-bottom: 1.75rem;
   letter-spacing: -2px;
   color: var(--text-primary);
@@ -184,9 +185,10 @@
   justify-content: center;
   align-items: center;
   min-height: 1.1em;
-  white-space: nowrap;
+  white-space: nowrap; 
   text-align: center;
   margin: 0 auto;
+  width: fit-content;
 }
 
 .typewriter-text {
@@ -293,12 +295,12 @@
 /* ── SCROLL INDICATOR ── */
 .scroll-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: 2.5rem;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--text-muted);
+  color: #ffffff;
   animation: bounce 2.5s ease-in-out infinite;
-  z-index: 1;
+  z-index: 10;
   cursor: pointer;
   transition: color 0.3s;
 }
@@ -321,7 +323,11 @@
 
 @media (max-width: 640px) {
   .hero {
-    padding: 7rem 1.5rem 4rem;
+    padding: 6rem 1.25rem 5rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .hero-content {
@@ -330,24 +336,25 @@
   }
 
   .hero-title {
-    font-size: 2.2rem;
-    line-height: 1.2;
+    font-size: clamp(2rem, 9.2vw, 2.5rem);
+    line-height: 1.15;
     letter-spacing: -1px;
     margin-bottom: 1.25rem;
   }
 
   .typewriter-wrap {
-    white-space: normal;
-    min-height: 2.5em;
-    display: block;
+    white-space: nowrap !important;
+    min-height: 1.2em;
+    font-size: 0.8em;
   }
 
   .hero-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     line-height: 1.6;
     margin-bottom: 2rem;
     max-width: 100%;
-    padding: 0 0.5rem;
+    padding: 0 1rem;
+    color: rgba(255, 255, 255, 0.75);
   }
 
   .hero-actions {
@@ -370,5 +377,12 @@
 
   .stat-num {
     font-size: 1.4rem;
+  }
+
+
+  .scroll-indicator {
+    bottom: 2.5rem;
+    display: flex !important;
+    z-index: 20;
   }
 }
