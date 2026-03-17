@@ -65,7 +65,8 @@ const Hero = () => {
         </h1>
 
         <p className="hero-subtitle" style={{ animation: 'fadeUp 0.7s ease 0.45s both' }}>
-          High-performance websites, revenue-driving marketing & rock-solid maintenance — all under one roof to scale your brand fearlessly.
+          High-performance websites, revenue-driving marketing & rock-solid maintenance — all under one roof to scale
+          your brand fearlessly.
         </p>
 
         <div className="hero-actions" style={{ animation: 'fadeUp 0.7s ease 0.65s both' }}>
