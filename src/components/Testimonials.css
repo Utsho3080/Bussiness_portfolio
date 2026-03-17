@@ -1,0 +1,221 @@
+/* ══════════════════════════════════════════
+   TESTIMONIALS SECTION
+══════════════════════════════════════════ */
+.testimonials {
+  padding: 6rem 2rem;
+  background-color: var(--bg-surface);
+  position: relative;
+}
+
+.testi-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.testi-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 3.5rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.testi-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.testi-title em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── Nav ── */
+.testi-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testi-nav-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.testi-nav-btn:hover:not(:disabled) {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.testi-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.testi-page-count {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+/* ── Cards Grid ── */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* ── Single Card ── */
+.testi-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 28px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.testi-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.testi-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  border-color: transparent;
+}
+
+.testi-card:hover::before {
+  opacity: 0.04;
+}
+
+[data-theme='light'] .testi-card {
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Quote icon ── */
+.testi-quote-icon {
+  color: var(--accent-blue);
+  opacity: 0.5;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Stars ── */
+.testi-stars {
+  display: flex;
+  gap: 0.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Review Text ── */
+.testi-review {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Author ── */
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+
+.testi-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--border);
+}
+
+.testi-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.testi-role {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0.15rem 0 0;
+}
+
+.testi-role span {
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+/* ── Dots ── */
+.testi-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.testi-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.testi-dot.active {
+  background: var(--accent-blue);
+  width: 24px;
+  border-radius: 9999px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .testimonials { padding: 4rem 1.5rem; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .testi-header { flex-direction: column; align-items: flex-start; }
+}

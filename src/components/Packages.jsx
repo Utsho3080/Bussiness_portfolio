@@ -119,19 +119,14 @@ const PriceCard = ({ pkg }) => {
 
   return (
     <div className={`pkg-card ${pkg.featured ? 'featured' : ''}`} style={{ '--accent': pkg.accentColor }}>
-      {pkg.featured && (
-        <div className="pkg-badge" style={{ background: pkg.accentColor }}>
-          <Star size={12} fill="white" /> Most Popular
-        </div>
-      )}
-
       <div className="pkg-header">
-        <div>
+        <div className="pkg-price-block">
           <span className="pkg-price">{pkg.price}</span>
           <span className="pkg-period">{pkg.period}</span>
-        </div>
-        <div className="pkg-tier-tag" style={{ background: pkg.accentColor }}>
-          {pkg.tier} Package
+          <div className="pkg-tier-tag" style={{ background: pkg.accentColor }}>
+            {pkg.featured && <Star size={12} fill="white" style={{ marginRight: '4px' }} />}
+            {pkg.tier} Package
+          </div>
         </div>
       </div>
 
@@ -168,7 +163,7 @@ const PriceCard = ({ pkg }) => {
 };
 
 const Packages = () => {
-  const [activeTab, setActiveTab] = useState('marketing');
+  const [activeTab, setActiveTab] = useState('web');
   const packages = activeTab === 'marketing' ? MARKETING_PACKAGES : WEB_PACKAGES;
 
   return (
@@ -182,17 +177,18 @@ const Packages = () => {
           <div className="pkg-tabs-wrapper">
             <div className="pkg-tabs">
               <button
-                className={`pkg-tab ${activeTab === 'marketing' ? 'active' : ''}`}
-                onClick={() => setActiveTab('marketing')}
-              >
-                Marketing Packages
-              </button>
-              <button
                 className={`pkg-tab ${activeTab === 'web' ? 'active' : ''}`}
                 onClick={() => setActiveTab('web')}
               >
                 Website Packages
               </button>
+              <button
+                className={`pkg-tab ${activeTab === 'marketing' ? 'active' : ''}`}
+                onClick={() => setActiveTab('marketing')}
+              >
+                Marketing Packages
+              </button>
+
             </div>
           </div>
         </div>

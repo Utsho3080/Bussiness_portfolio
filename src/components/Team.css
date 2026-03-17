@@ -1,8 +1,36 @@
 .team {
-  padding: 2rem 2rem;
+  padding: 4rem 2rem;
   background-color: var(--bg-color);
   position: relative;
   overflow: hidden;
+}
+
+.team-header {
+  max-width: 1000px;
+  margin: 0 auto 4rem;
+  text-align: left;
+}
+
+.team-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 1.5rem;
+}
+
+.team-title em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.team-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
 }
 
 .team::before {
@@ -18,7 +46,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 3rem;
+  gap: 4rem;
 }
 
 .team-card {
@@ -64,8 +92,22 @@
 }
 
 .card-content {
-  padding: 2.25rem;
-  text-align: center;
+  padding: 2.5rem;
+  text-align: left;
+}
+
+.member-skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.25rem;
 }
 
 .role-badge {

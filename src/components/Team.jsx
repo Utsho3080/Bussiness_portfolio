@@ -24,13 +24,12 @@ const Team = () => {
 
   return (
     <section className="team" id="team">
-      <div className="section-heading text-center">
-        <span className="section-badge">The Team</span>
-        <h2 className="title">Meet the <span className="text-accent">Experts</span></h2>
-        <p className="subtitle">Driven by passion. Defined by results. Obsessed with excellence.</p>
-        <div className="glow-divider"></div>
+      <div className="team-header">
+        <h2 className="team-title">
+          Meet The <em>Experts</em>
+        </h2>
+        <p className="team-subtitle">Driven by passion. Defined by results. Obsessed with excellence.</p>
       </div>
-
       <div className="team-grid">
         {teamMembers.map((member, index) => (
           <div key={index} className="team-card reveal">

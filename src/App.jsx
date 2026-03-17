@@ -2,6 +2,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import ScrollToTop from './components/ScrollToTop';
 import Faq from './components/Faq';
 import Team from './components/Team';
 import Projects from './components/Projects';
@@ -10,13 +11,14 @@ import Logos from './components/Logos';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ParticleCanvas from './components/ParticleCanvas';
+import Testimonials from './components/Testimonials';
 
 export const ThemeContext = createContext();
 
 export const useTheme = () => useContext(ThemeContext);
 
 function App() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
@@ -58,6 +60,7 @@ function App() {
       <div className="app-container">
         <ParticleCanvas />
         <Navbar />
+        <ScrollToTop />
         <main>
           <Hero />
           <Services />
@@ -66,6 +69,7 @@ function App() {
           <Packages />
 
           <Team />
+          <Testimonials />
           <Contact />
           <Logos />
           <Faq />

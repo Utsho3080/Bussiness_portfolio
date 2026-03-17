@@ -9,6 +9,7 @@ const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
 
 const EMAIL = 'sahasujit8100@gmail.com';
 const PHONE = '+91 6290575057';
+const background = '/contact_bg.png';
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });

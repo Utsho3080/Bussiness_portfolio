@@ -8,7 +8,7 @@
 }
 
 .packages-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -97,7 +97,7 @@
   background: var(--bg-card);
   border: 1.5px solid var(--border);
   border-radius: 24px;
-  padding: 2.5rem 2rem;
+  padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -150,8 +150,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 1rem;
+}
+
+.pkg-price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .pkg-price {
@@ -180,13 +187,18 @@
 }
 
 .pkg-tier-tag {
-  padding: 0.4rem 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 1rem;
   border-radius: 9999px;
   color: #ffffff;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.5px;
   white-space: nowrap;
+  width: fit-content;
+  margin-top: 0.6rem;
 }
 
 /* ── Tagline ── */
