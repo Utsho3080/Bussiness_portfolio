@@ -28,7 +28,14 @@ const TESTIMONIALS = [
     rating: 5,
     review: "They made a great website for my bussiness. It is very good and professional",
   },
-
+  {
+    name: 'Tarvin Sultana',
+    role: 'Chairman',
+    company: 'St. Thomas Bagnan School',
+    avatar: '/st thomas.jpeg',
+    rating: 5,
+    review: "St. Thomas Bagnan School-এর পক্ষ থেকে Sujit কে মার্কেটিং কার্যক্রমের জন্য ধন্যবাদ জানাই। তাদের প্রফেশনাল কাজ, সঠিক স্ট্র্যাটেজি এবং ডেডিকেশন আমাদের প্রতিষ্ঠানের অনলাইন উপস্থিতি অনেকটাই বৃদ্ধি করেছে। তাদের টিম অত্যন্ত সহযোগিতাপূর্ণ এবং সময়মতো কাজ সম্পন্ন করেছে। আমরা তাদের সার্ভিসে সম্পূর্ণ সন্তুষ্ট এবং ভবিষ্যতেও একসাথে কাজ করার প্রত্যাশা রাখি।",
+  },
 ];
 
 const StarRating = ({ rating }) => (
