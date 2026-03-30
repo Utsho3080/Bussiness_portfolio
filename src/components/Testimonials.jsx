@@ -21,7 +21,7 @@ const TESTIMONIALS = [
   },
 
   {
-    name: 'Rahul Verma',
+    name: 'Sumon Banerjee',
     role: 'Founder',
     company: 'Absolute Publisher',
     avatar: '/man_icon.png',

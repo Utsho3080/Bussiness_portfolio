@@ -103,12 +103,17 @@
 }
 
 .card-content {
-  padding: 2.5rem;
+  padding: 2rem 2.5rem;
   text-align: left;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+
+.member-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -144,9 +149,10 @@
 
 .member-desc {
   color: var(--text-secondary);
-  margin-bottom: 2rem;
   line-height: 1.75;
   font-size: 0.96rem;
+  margin-bottom: 2rem;
+  min-height: 120px; /* Aligns social links with 3-4 lines of text */
 }
 
 /* Member cards left-aligned */
