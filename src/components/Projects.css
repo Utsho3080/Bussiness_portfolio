@@ -298,7 +298,7 @@ body.modal-open {
 /* ── Modal Gallery ── */
 .proj-modal-gallery {
   position: relative;
-  width: 100%;
+  width: 500px;
   aspect-ratio: 1 / 1;
   /* Makes the gallery perfectly square */
   border-radius: 32px 32px 0 0;

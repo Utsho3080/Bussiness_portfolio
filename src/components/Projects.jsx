@@ -59,6 +59,14 @@ const PROJECTS = [
     liveUrl: '#',
   },
   {
+    title: "Potter's Shed",
+    category: 'Website Development',
+    coverImage: '/project/potters shed.jpeg',
+    images: ['/project/potters shed 2.jpeg'],
+    description: 'A gifting website where seling the flower and plants pots and many more things',
+    liveUrl: 'https://pottersshed.com.au/',
+  },
+  {
     title: 'Doctor Mitchell',
     category: 'Website Development',
     coverImage: '/project/doctor website.jpg',
