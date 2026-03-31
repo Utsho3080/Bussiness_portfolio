@@ -5,6 +5,8 @@
   padding: 6rem 6rem;
   background-color: var(--bg-surface);
   position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .packages-container {
@@ -340,6 +342,10 @@
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
+  .packages {
+    padding: 5rem 2rem;
+  }
+
   .pkg-grid {
     grid-template-columns: repeat(2, 1fr);
   }
