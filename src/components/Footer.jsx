@@ -1,8 +1,25 @@
-import React from 'react';
-import { Code2, Linkedin } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { Code2, Linkedin, X } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    if (showPopup) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+    return () => document.body.classList.remove('modal-open');
+  }, [showPopup]);
+
+  const handleLegalClick = (e) => {
+    e.preventDefault();
+    setShowPopup(true);
+  };
+
   return (
     <footer className="footer">
       <div className="footer-backdrop">Orientix</div>
@@ -25,9 +42,9 @@ const Footer = () => {
 
         <div className="footer-legal">
           <h4>Legal</h4>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Cookie Policy</a>
+          <a href="#" onClick={handleLegalClick}>Privacy Policy</a>
+          <a href="#" onClick={handleLegalClick}>Terms of Service</a>
+          <a href="#" onClick={handleLegalClick}>Cookie Policy</a>
         </div>
       </div>
 
@@ -38,6 +55,19 @@ const Footer = () => {
           <a href="#"> LinkedIn</a>
         </div>
       </div>
+
+      {showPopup && createPortal(
+        <div className="footer-popup-backdrop" onClick={() => setShowPopup(false)}>
+          <div className="footer-popup" onClick={e => e.stopPropagation()}>
+            <button className="footer-popup-close" onClick={() => setShowPopup(false)} aria-label="Close">
+              <X size={20} />
+            </button>
+            <h3>Coming Soon</h3>
+            <p>Our legal documents are currently being updated. Please check back later.</p>
+          </div>
+        </div>,
+        document.body
+      )}
     </footer>
   );
 };
