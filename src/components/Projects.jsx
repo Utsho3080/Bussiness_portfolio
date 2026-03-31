@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { ExternalLink, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import './Projects.css';
 
@@ -84,7 +85,7 @@ const ProjectModal = ({ project, onClose }) => {
   const prev = () => setImgIdx(i => (i - 1 + project.images.length) % project.images.length);
   const next = () => setImgIdx(i => (i + 1) % project.images.length);
 
-  return (
+  return createPortal(
     <div className="proj-modal-backdrop" onClick={onClose}>
       <div className="proj-modal" onClick={e => e.stopPropagation()}>
         <button className="proj-modal-close" onClick={onClose}><X size={20} /></button>
@@ -119,7 +120,8 @@ const ProjectModal = ({ project, onClose }) => {
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

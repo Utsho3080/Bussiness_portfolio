@@ -2,7 +2,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
-import ScrollToTop from './components/ScrollToTop';
+import WhatsAppButton from './components/WhatsAppButton';
 import Faq from './components/Faq';
 import Team from './components/Team';
 import Projects from './components/Projects';
@@ -10,7 +10,7 @@ import Packages from './components/Packages';
 import Logos from './components/Logos';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ParticleCanvas from './components/ParticleCanvas';
+
 import Testimonials from './components/Testimonials';
 
 function App() {
@@ -47,16 +47,13 @@ function App() {
 
   return (
     <div className="app-container">
-      <ParticleCanvas />
       <Navbar />
-      <ScrollToTop />
+      <WhatsAppButton />
       <main>
         <Hero />
         <Services />
-
         <Projects />
         <Packages />
-
         <Team />
         <Testimonials />
         <Contact />

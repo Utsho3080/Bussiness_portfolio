@@ -135,7 +135,7 @@
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 2.2rem;
   text-align: center;
 }
 
@@ -143,7 +143,7 @@
   font-family: var(--font-head);
   font-size: 1.9rem;
   font-weight: 900;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   letter-spacing: -0.5px;
 }
 
@@ -151,8 +151,9 @@
   color: var(--text-secondary);
   line-height: 1.75;
   font-size: 0.96rem;
-  margin-bottom: 2rem;
-  min-height: 120px; /* Aligns social links with 3-4 lines of text */
+  margin-bottom: 1rem;
+  min-height: 120px;
+  /* Aligns social links with 3-4 lines of text */
 }
 
 /* Member cards left-aligned */

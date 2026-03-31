@@ -32,8 +32,8 @@ const FAQ_DATA = [
     answer: "Yes! We build using intuitive CMS platforms that allow you to easily edit text, add new products, or update your blog without needing any technical knowledge."
   },
   {
-    question: "What makes you different from other website designers?",
-    answer: "We don't just 'design websites.' We build business tools. Our focus on user psychology, cutting-edge 3D visuals, and speed optimization ensures your site is a powerful driver for your sales."
+    question: "Do you provide post-launch support and maintenance?",
+    answer: "Yes! We offer up to 90 days of free post-launch support to ensure your website or application continues to run flawlessly. We also offer long-term maintenance packages for security, performance, and updates."
   }
 ];
 

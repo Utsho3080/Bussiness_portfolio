@@ -6,15 +6,23 @@
   overflow: hidden;
 }
 
-.footer::before {
-  content: '';
+.footer-backdrop {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--gradient-primary);
-  opacity: 0.5;
+  top: 70%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(8rem, 20vw, 24rem);
+  font-weight: 800;
+  color: #0051ff;
+  opacity: 0.035;
+  pointer-events: none;
+  user-select: none;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 5rem;
+  line-height: 1;
+  z-index: 0;
+
+  white-space: nowrap;
 }
 
 .footer-content {
@@ -24,6 +32,8 @@
   grid-template-columns: 2fr 1fr 1fr;
   gap: 4rem;
   margin-bottom: 4rem;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-brand p {

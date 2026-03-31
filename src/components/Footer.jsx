@@ -1,10 +1,11 @@
 import React from 'react';
-import { Code2 } from 'lucide-react';
+import { Code2, Linkedin } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
   return (
     <footer className="footer">
+      <div className="footer-backdrop">Orientix</div>
       <div className="footer-content">
         <div className="footer-brand">
           <a href="#home" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-head)', fontSize: '1.5rem', fontWeight: 900 }}>
@@ -33,9 +34,8 @@ const Footer = () => {
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Orientix Technologies. All rights reserved.</p>
         <div className="footer-bottom-links">
-          <a href="#">Twitter</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">Dribbble</a>
+
+          <a href="#"> LinkedIn</a>
         </div>
       </div>
     </footer>

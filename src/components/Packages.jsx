@@ -7,7 +7,7 @@ const PHONE = '+916290575057';
 const MARKETING_PACKAGES = [
   {
     tier: 'Silver',
-    price: '₹7K',
+    price: '₹6999',
     period: 'Per month',
     tagline: 'Ideal for startups & local businesses — build presence & brand identity.',
     features: [
@@ -25,7 +25,7 @@ const MARKETING_PACKAGES = [
   },
   {
     tier: 'Gold',
-    price: '₹10K',
+    price: '₹9999',
     period: 'Per month',
     tagline: 'Ideal for growing brands — stronger engagement & lead generation.',
     features: [
@@ -43,7 +43,7 @@ const MARKETING_PACKAGES = [
   },
   {
     tier: 'Diamond',
-    price: '₹12K',
+    price: '₹11999',
     period: 'Per month',
     tagline: 'Ideal for established brands — premium creative & ad performance.',
     features: [
@@ -64,7 +64,7 @@ const MARKETING_PACKAGES = [
 const WEB_PACKAGES = [
   {
     tier: 'Starter',
-    price: '₹15K',
+    price: '₹14999',
     period: 'One-time',
     tagline: 'Early-stage businesses establishing an online presence',
     features: [
@@ -82,7 +82,7 @@ const WEB_PACKAGES = [
   },
   {
     tier: 'Growth',
-    price: '₹25K',
+    price: '₹24999',
     period: 'One-time',
     tagline: 'Growing businesses focused on lead generation and brand positioning',
     features: [
@@ -93,9 +93,9 @@ const WEB_PACKAGES = [
       'Performance, Speed & SEO Optimization  ',
       'Responsive Design (Mobile, Tablet, Desktop)',
       'Social Media Integration',
-      '15 days Free Marketing',
-      '1 Year Free Hosting ',
+      '15 Days Free Marketing',
       '30 Days Free Post-Launch Support & Maintanence',
+      '1 Year Free Hosting ',
     ],
     goal: 'Scale your business with a feature-rich web platform.',
     featured: true,
@@ -103,7 +103,7 @@ const WEB_PACKAGES = [
   },
   {
     tier: 'Business',
-    price: '₹50K',
+    price: '₹49999',
     period: 'One-time',
     tagline: 'Full-scale web application built to grow with your business.',
     features: [
@@ -115,8 +115,8 @@ const WEB_PACKAGES = [
       'Technical SEO, Performance & Speed Optimization',
       'Analytics Integration',
       'Security Configuration (SSL, basic protection setup)',
-      '30 days Free Marketing',
-      '6 Months Free Post-Launch Support & Maintenance',
+      '30 Days Free Marketing',
+      '90 Days Free Post-Launch Support & Maintenance',
       '1 Year Free Hosting ',
     ],
     goal: 'Build a complete digital ecosystem for your brand.',
