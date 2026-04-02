@@ -7,7 +7,7 @@ const PHONE = '+916290575057';
 const MARKETING_PACKAGES = [
   {
     tier: 'Silver',
-    price: '₹6999',
+    price: '₹6,999',
     period: 'Per month',
     tagline: 'Ideal for startups & local businesses — build presence & brand identity.',
     features: [
@@ -25,7 +25,7 @@ const MARKETING_PACKAGES = [
   },
   {
     tier: 'Gold',
-    price: '₹9999',
+    price: '₹9,999',
     period: 'Per month',
     tagline: 'Ideal for growing brands — stronger engagement & lead generation.',
     features: [
@@ -43,7 +43,7 @@ const MARKETING_PACKAGES = [
   },
   {
     tier: 'Diamond',
-    price: '₹11999',
+    price: '₹11,999',
     period: 'Per month',
     tagline: 'Ideal for established brands — premium creative & ad performance.',
     features: [
@@ -64,7 +64,7 @@ const MARKETING_PACKAGES = [
 const WEB_PACKAGES = [
   {
     tier: 'Starter',
-    price: '₹14999',
+    price: '₹14,999',
     period: 'One-time',
     tagline: 'Early-stage businesses establishing an online presence',
     features: [
@@ -82,7 +82,7 @@ const WEB_PACKAGES = [
   },
   {
     tier: 'Growth',
-    price: '₹24999',
+    price: '₹24,999',
     period: 'One-time',
     tagline: 'Growing businesses focused on lead generation and brand positioning',
     features: [
@@ -103,7 +103,7 @@ const WEB_PACKAGES = [
   },
   {
     tier: 'Business',
-    price: '₹49999',
+    price: '₹49,999',
     period: 'One-time',
     tagline: 'Full-scale web application built to grow with your business.',
     features: [

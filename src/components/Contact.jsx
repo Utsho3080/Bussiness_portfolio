@@ -7,7 +7,7 @@ const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
 const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
 const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
 
-const EMAIL = 'sahasujit8100@gmail.com';
+const EMAIL = 'support.orientix@gmail.com';
 const PHONE = '+91 81007 30178';
 const background = '/contact_bg.png';
 
