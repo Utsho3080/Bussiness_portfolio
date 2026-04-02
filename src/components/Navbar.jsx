@@ -27,14 +27,17 @@ const Navbar = () => {
     { name: 'Projects', href: '#projects' },
     { name: 'Packages', href: '#packages' },
     { name: 'Team', href: '#team' },
-
+    { name: 'Contact', href: '#contact' },
   ];
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
     if (href.startsWith('#')) {
-      lenis?.scrollTo(href, { offset: -80 });
+      // Small delay ensures Lenis calculates the target AFTER the menu starts closing
+      setTimeout(() => {
+        lenis?.scrollTo(href, { offset: -80, duration: 1.2 });
+      }, 50);
     }
   };
 
@@ -46,7 +49,7 @@ const Navbar = () => {
         </a>
 
         <div className="desktop-links">
-          {navLinks.map((link) => (
+          {navLinks.filter(link => link.name !== 'Contact').map((link) => (
             <a
               key={link.name}
               href={link.href}
