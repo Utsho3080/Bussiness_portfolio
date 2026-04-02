@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useLenis } from '@studio-freight/react-lenis';
 import { createPortal } from 'react-dom';
 import { ExternalLink, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import './Projects.css';
@@ -9,7 +10,7 @@ const PROJECTS = [
     category: 'Web Development',
     coverImage: '/project/sproutwelldecor.jpeg',
     images: ['/project/sproutwelldecor2.png'],
-    description: 'A complete e-commerce platform overhaul resulting in a 40% increase in conversions and dramatically improved UX.',
+    description: 'A modern e-commerce website for a premium home decor brand — intuitive browse, cart, and checkout experience.',
     liveUrl: 'https://sproutwelldecor.com.au/',
   },
   {
@@ -20,7 +21,7 @@ const PROJECTS = [
       '/project/fashion app design 2.jpeg',
       '/project/fashion app design 5.png',
     ],
-    description: 'High-performance data dashboard with real-time analytics, custom charts, and a clean scalable React architecture.',
+    description: 'A modern mobile app UI for a premium fashion and clothing brand — intuitive browse, cart, and checkout experience.',
     liveUrl: '#',
   },
   {
@@ -28,26 +29,37 @@ const PROJECTS = [
     category: 'Web Development',
     coverImage: '/project/educational website.jpeg',
     images: ['/project/educational website 2.jpeg'],
-    description: 'Omnichannel campaign hitting 2M+ users, boosting brand awareness 65% and tripling qualified inbound leads.',
+    description: 'A educational consultant website with all the features of a modern website.',
     liveUrl: '#',
   },
   {
-    title: 'Beer App UI Design',
+    title: 'Beauty Saloon Website',
+    category: 'Web Development',
+    coverImage: '/project/Beauty saloon.jpeg',
+    images: ['/project/Beauty saloon 2.jpeg'],
+    description: 'A beauty saloon website with all the features of a modern website.',
+    liveUrl: '#',
+  },
+  {
+    title: 'Liquor App UI Design',
     category: 'App Design',
     coverImage: '/project/beer_website.jpeg',
-    images: [
-      'https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&q=80&w=1200&h=700',
-      'https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&q=80&w=1200&h=700',
+    images: ['/project/beer_website 2.png',
+      '/project/beer_website 3.png',
+
     ],
-    description: 'A modern mobile app UI for a premium beer delivery service — intuitive browse, cart, and checkout experience.',
+    description: 'A modern mobile app UI for a premium liquor delivery service — intuitive browse, cart, and checkout experience.',
     liveUrl: '#',
   },
   {
     title: 'Seemy',
     category: 'website design',
     coverImage: '/project/seemy.jpeg',
-    images: ['/project/seemy 2.jpeg'],
-    description: 'Full brand identity design including logo, color palette, typography system, and comprehensive brand guidelines.',
+    images: ['/project/seemy 2.jpeg',
+      '/project/seemy 3.jpeg',
+      '/project/seemy 4.jpeg'],
+
+    description: 'A modern website UI for a eyeglass and sunglass delivery service — intuitive browse, cart, and checkout experience.',
     liveUrl: '#',
   },
   {
@@ -55,7 +67,7 @@ const PROJECTS = [
     category: 'Website Development',
     coverImage: '/project/book publisher.jpeg',
     images: ['/project/book publisher 2.jpeg'],
-    description: 'Full brand identity design including logo, color palette, typography system, and comprehensive brand guidelines.',
+    description: 'A book publisher website with all the features of a modern website with book selling',
     liveUrl: '#',
   },
   {
@@ -79,23 +91,27 @@ const PROJECTS = [
 // ── Popup Modal ──
 const ProjectModal = ({ project, onClose }) => {
   const [imgIdx, setImgIdx] = useState(0);
+  const lenis = useLenis();
 
   useEffect(() => {
     const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', handleKey);
     document.body.classList.add('modal-open');
+    lenis?.stop();
+
     return () => {
       document.removeEventListener('keydown', handleKey);
       document.body.classList.remove('modal-open');
+      lenis?.start();
     };
-  }, [onClose]);
+  }, [onClose, lenis]);
 
   const prev = () => setImgIdx(i => (i - 1 + project.images.length) % project.images.length);
   const next = () => setImgIdx(i => (i + 1) % project.images.length);
 
   return createPortal(
-    <div className="proj-modal-backdrop" onClick={onClose}>
-      <div className="proj-modal" onClick={e => e.stopPropagation()}>
+    <div className="proj-modal-backdrop" onClick={onClose} data-lenis-prevent>
+      <div className="proj-modal" onClick={e => e.stopPropagation()} data-lenis-prevent>
         <button className="proj-modal-close" onClick={onClose}><X size={20} /></button>
 
         {/* Image Slider */}

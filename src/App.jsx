@@ -1,4 +1,5 @@
 import React, { useEffect, useState, createContext, useContext } from 'react';
+import { ReactLenis } from '@studio-freight/react-lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -46,22 +47,24 @@ function App() {
   }, []);
 
   return (
-    <div className="app-container">
-      <Navbar />
-      <WhatsAppButton />
-      <main>
-        <Hero />
-        <Services />
-        <Projects />
-        <Packages />
-        <Team />
-        <Testimonials />
-        <Contact />
-        <Logos />
-        <Faq />
-      </main>
-      <Footer />
-    </div>
+    <ReactLenis root>
+      <div className="app-container">
+        <Navbar />
+        <WhatsAppButton />
+        <main>
+          <Hero />
+          <Services />
+          <Projects />
+          <Packages />
+          <Team />
+          <Testimonials />
+          <Contact />
+          <Logos />
+          <Faq />
+        </main>
+        <Footer />
+      </div>
+    </ReactLenis>
   );
 }
 

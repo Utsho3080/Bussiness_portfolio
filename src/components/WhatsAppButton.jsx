@@ -8,15 +8,26 @@ const WhatsAppButton = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const heroSection = document.getElementById('home');
+    
+    // Initial check in case Hero is already in view
+    if (heroSection) {
+      const rect = heroSection.getBoundingClientRect();
+      setVisible(rect.bottom <= 100); // Only show if we've scrolled past the top
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         // Hide button when Hero (#home) is in view
+        // Using threshold 0 and checking isIntersecting for maximum sensitivity
         setVisible(!entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0,
+        rootMargin: "-80px 0px 0px 0px" // Offset for the navbar height
+      }
     );
 
-    const heroSection = document.getElementById('home');
     if (heroSection) observer.observe(heroSection);
 
     return () => {

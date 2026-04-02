@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useLenis } from '@studio-freight/react-lenis';
 import { ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
 import './Hero.css';
 
@@ -10,6 +11,7 @@ const Hero = () => {
   const charIndexRef = useRef(0);
   const deletingRef = useRef(false);
   const timerRef = useRef(null);
+  const lenis = useLenis();
 
   useEffect(() => {
     const type = () => {
@@ -39,6 +41,11 @@ const Hero = () => {
     timerRef.current = setTimeout(type, 600);
     return () => clearTimeout(timerRef.current);
   }, []);
+
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    lenis?.scrollTo(id, { offset: -80 });
+  };
 
   return (
     <section className="hero" id="home">
@@ -70,7 +77,7 @@ const Hero = () => {
         </p>
 
         <div className="hero-actions" style={{ animation: 'fadeUp 0.7s ease 0.65s both' }}>
-          <a href="#services" className="btn-primary hero-btn">
+          <a href="#services" className="btn-primary hero-btn" onClick={(e) => scrollToSection(e, '#services')}>
             Explore Services <ArrowRight size={18} />
           </a>
           <a href="tel:+91 81007 30178" className="btn-secondary hero-btn">
@@ -80,7 +87,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <a href="#services" className="scroll-indicator" aria-label="Scroll down">
+      <a href="#services" className="scroll-indicator" aria-label="Scroll down" onClick={(e) => scrollToSection(e, '#services')}>
         <ChevronDown size={28} />
       </a>
     </section>

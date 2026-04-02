@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Code2 } from 'lucide-react';
+import { useLenis } from '@studio-freight/react-lenis';
+import { Menu, X } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  /* Removed useTheme usage */
+  const lenis = useLenis();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -13,29 +14,52 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      lenis?.stop();
+    } else {
+      lenis?.start();
+    }
+  }, [isMobileMenuOpen, lenis]);
+
   const navLinks = [
     { name: 'Services', href: '#services' },
     { name: 'Projects', href: '#projects' },
     { name: 'Packages', href: '#packages' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Team', href: '#team' },
+
   ];
+
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    if (href.startsWith('#')) {
+      lenis?.scrollTo(href, { offset: -80 });
+    }
+  };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <a href="#home" className="logo">
-          <Code2 className="logo-icon" size={28} />
-          <span>Orien<span className="text-accent">tix</span></span>
+        <a href="#home" className="logo" onClick={(e) => handleNavClick(e, '#home')}>
+          <img src="/orientix.png" alt="Orientix Logo" className="logo-img" style={{ height: '40px', width: 'auto' }} />
         </a>
 
         <div className="desktop-links">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="nav-link">{link.name}</a>
+            <a
+              key={link.name}
+              href={link.href}
+              className="nav-link"
+              onClick={(e) => handleNavClick(e, link.href)}
+            >
+              {link.name}
+            </a>
           ))}
         </div>
 
         <div className="nav-right">
-          <a href="#contact" className="btn-primary">Contact Us</a>
+          <a href="#contact" className="btn-primary" onClick={(e) => handleNavClick(e, '#contact')}>Contact Us</a>
 
           <div className="mobile-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -43,13 +67,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+      <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`} data-lenis-prevent>
         {navLinks.map((link) => (
           <a
             key={link.name}
             href={link.href}
             className="mobile-link"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={(e) => handleNavClick(e, link.href)}
           >
             {link.name}
           </a>
