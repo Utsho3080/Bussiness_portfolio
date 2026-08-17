@@ -54,6 +54,29 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Helper to send Expo Push Notification to a target user
+const sendExpoPushNotification = async (targetUserId, title, body) => {
+  try {
+    const userRes = await db.query('SELECT push_token FROM users WHERE id = $1', [targetUserId]);
+    const pushToken = userRes.rows[0]?.push_token;
+    if (pushToken && pushToken.startsWith('ExponentPushToken')) {
+      await fetch('https://exp.host/--/api/v2/push/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: pushToken,
+          sound: 'default',
+          title: title,
+          body: body,
+          priority: 'high',
+        }),
+      });
+    }
+  } catch (e) {
+    console.error('Error sending Expo push notification:', e);
+  }
+};
+
 // POST /api/todos - Create a new todo
 router.post('/', async (req, res) => {
   const { title, description, assigned_to, due_date, status, priority } = req.body;
@@ -64,7 +87,18 @@ router.post('/', async (req, res) => {
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
       [title, description, assigned_by, assigned_to || assigned_by, due_date, status || 'pending', status === 'completed' ? (due_date || new Date().toISOString()) : null, priority || 'Medium']
     );
-    res.status(201).json(result.rows[0]);
+    const newTodo = result.rows[0];
+    const targetUserId = assigned_to || assigned_by;
+    if (targetUserId && targetUserId !== assigned_by) {
+      const assignerRes = await db.query('SELECT name, email FROM users WHERE id = $1', [assigned_by]);
+      const assignerName = assignerRes.rows[0]?.name || assignerRes.rows[0]?.email || 'কেউ';
+      sendExpoPushNotification(
+        targetUserId,
+        '🚨 ভাইরে ভাই! নতুন কাজ এসেছে!',
+        `${assignerName} তোমাকে নতুন কাজ দিয়েছে: "${title}"! এবার একটু ফোন রাখা যাক, কাজটা সেরে ফেলো! 🏃‍♂️💨`
+      );
+    }
+    res.status(201).json(newTodo);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Server error' });
@@ -88,11 +122,6 @@ router.put('/:id', async (req, res) => {
       return res.status(403).json({ error: 'Forbidden' });
     }
 
-    // Only creator or SuperAdmin can change due_date and title for associate tasks
-    // If you are assigned_to but not assigned_by, and not SuperAdmin, maybe you can only change status?
-    // User requested: "due date or task name can be changeable who create the task for admin. but associate task can be changed by any admin."
-    // We'll enforce this broadly:
-    
     let updateTitle = todo.title;
     let updateDueDate = todo.due_date;
     let updateDescription = todo.description;
@@ -145,6 +174,17 @@ router.delete('/:id', async (req, res) => {
     }
 
     await db.query(`UPDATE todos SET status = 'deleted', deleted_by = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2`, [userId, id]);
+
+    if (todo.assigned_to) {
+      const deleterRes = await db.query('SELECT name, email FROM users WHERE id = $1', [userId]);
+      const deleterName = deleterRes.rows[0]?.name || deleterRes.rows[0]?.email || 'কেউ';
+      sendExpoPushNotification(
+        todo.assigned_to,
+        '🎉 আনন্দ করুন! কাজ গায়েব!',
+        `"${todo.title}" কাজটা ${deleterName} মুছে ফেলেছে! যাও এবার একটু চা আর বিস্কুট খেয়ে বিশ্রাম নাও! ☕🥳`
+      );
+    }
+
     res.json({ message: 'Todo deleted successfully' });
   } catch (err) {
     console.error(err);

@@ -189,4 +189,19 @@ router.get('/users', verifyToken, async (req, res) => {
   }
 });
 
+// 7. Save Push Token
+router.post('/save-push-token', verifyToken, async (req, res) => {
+  const { pushToken } = req.body;
+  const userId = req.user.id;
+  try {
+    if (pushToken) {
+      await db.query('UPDATE users SET push_token = $1 WHERE id = $2', [pushToken, userId]);
+    }
+    res.json({ message: 'Push token saved successfully' });
+  } catch (err) {
+    console.error('Error saving push token:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 module.exports = router;
