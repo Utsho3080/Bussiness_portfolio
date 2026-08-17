@@ -91,11 +91,11 @@ router.post('/', async (req, res) => {
     const targetUserId = assigned_to || assigned_by;
     if (targetUserId && targetUserId !== assigned_by) {
       const assignerRes = await db.query('SELECT name, email FROM users WHERE id = $1', [assigned_by]);
-      const assignerName = assignerRes.rows[0]?.name || assignerRes.rows[0]?.email || 'কেউ';
+      const assignerName = assignerRes.rows[0]?.name || assignerRes.rows[0]?.email || 'Someone';
       sendExpoPushNotification(
         targetUserId,
-        '🚨 ভাইরে ভাই! নতুন কাজ এসেছে!',
-        `${assignerName} তোমাকে নতুন কাজ দিয়েছে: "${title}"! এবার একটু ফোন রাখা যাক, কাজটা সেরে ফেলো! 🏃‍♂️💨`
+        '🚨 New Mission Assigned!',
+        `${assignerName} handed you: "${title}". No pressure, but the clock is ticking! ⏰🏃‍♂️`
       );
     }
     res.status(201).json(newTodo);
@@ -177,11 +177,11 @@ router.delete('/:id', async (req, res) => {
 
     if (todo.assigned_to) {
       const deleterRes = await db.query('SELECT name, email FROM users WHERE id = $1', [userId]);
-      const deleterName = deleterRes.rows[0]?.name || deleterRes.rows[0]?.email || 'কেউ';
+      const deleterName = deleterRes.rows[0]?.name || deleterRes.rows[0]?.email || 'Someone';
       sendExpoPushNotification(
         todo.assigned_to,
-        '🎉 আনন্দ করুন! কাজ গায়েব!',
-        `"${todo.title}" কাজটা ${deleterName} মুছে ফেলেছে! যাও এবার একটু চা আর বিস্কুট খেয়ে বিশ্রাম নাও! ☕🥳`
+        '🎉 Poof! Task Vanished!',
+        `"${todo.title}" was deleted by ${deleterName}. Time to take a quick victory nap! 💤🥳`
       );
     }
 
